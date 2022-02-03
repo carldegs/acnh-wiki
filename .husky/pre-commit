@@ -1,0 +1,24 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo 'Starting pre-commit tests'
+
+npm run check-format ||
+(
+    echo '⚠️ Prettier Check Failed. Run npm run format, add changes and try commit again.';
+    false;
+)
+
+npm run check-lint ||
+(
+    echo '⚠️ ESLint Check Failed. Make the required changes listed above, add changes and try to commit again.'
+    false; 
+)
+
+npm run check-types ||
+(
+    echo '⚠️ Typescript error. Make the changes required above.'
+    false;
+)
+
+echo '✅ Pre-commit tests passed. Executing git commit...'

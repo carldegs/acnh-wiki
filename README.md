@@ -12,7 +12,7 @@ For small projects, I often use CRA since it allows faster tooling. But then, th
 Currently, my go-to toolchain/framework for web apps is NextJS. Some reasons why I chose this:
 
 1. A lot of features are already being handle by NextJS (e.g, Built-in support for CSS, SASS, ESLint and Typescript) , making it useful for projects that has a quick turnaround (e.g, this one).
-2. The built-in router lets you not worry about routing altogether and just implement it using your file routing. One disadvantage is that your code will be more opinionated, but if you are using Atomic Design this wouldn't be an issue.
+2. The built-in router lets you not worry about routing altogether and just implement it using your file routing. One disadvantage is that your code will be more opinionated, but if you are using Atomic Design - which would also help with scalability - this wouldn't be an issue.
 3. Allows you to create server-rendered (SSR) pages, but still set other pages as statically-generated (SSG) or client-rendered.
 
 ## API
@@ -67,3 +67,9 @@ Recently, I moved away from using Redux, a client-state state manager, to [React
 React Query is responsible for managing asynchronous operations and caching the response. This library replaces the boilerplate code of Redux and whatever middleware used for handling asynchronous calls (e.g, Redux Thunk/ Redux Toolkit). Instead of needing to create thunks, reducers, and actions, we could just call a hook (or create a "wrapper" hook) and it would handle the asynchronous operation. Another advantage is it's ability to pre-fetch data on the server using *Hydration*. This allows us to pre-render a page that is available on page load, then populate/dehydrate the queries once JS is loaded on the client-side.
 
 For other client-side states that needs to be managed, a simple Context hook will suffice.
+
+## Linting
+
+The lint ruleset I've used is the same as the one I used for my template. This is based on the recommended ESLint ruleset with plugins to handle rules for React, React Hooks (this one helps in setting up hook dependencies) and digital accessibility (jsx-a11y), and a prettier plugin to automatically sort imports.
+
+I also installed Husky to handle pre-commit checks to prevent incorrect code from being pushed.
