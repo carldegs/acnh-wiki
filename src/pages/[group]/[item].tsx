@@ -1,13 +1,31 @@
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { CaretDoubleRight, CoinVertical } from 'phosphor-react';
 import { useMemo } from 'react';
 
 import Container from '../../atoms/Container';
+import InfoGrid from '../../atoms/InfoGrid';
+import SectionHeader from '../../atoms/SectionHeader';
+import Spinner from '../../atoms/Spinner';
+import SubSectionHeader from '../../atoms/SubSectionHeader';
 import GROUP_DATA from '../../constants/groupData';
 import useCustomTheme from '../../hooks/useCustomTheme';
 import { useQueryItem } from '../../modules/queries';
-import Group from '../../types/Group';
+import AvailabilityInfo from '../../organisms/AvailabilityInfo';
+import Header from '../../organisms/Header';
+import VillagerInfo from '../../organisms/VillagerInfo';
+import {
+  BuyableItem,
+  MuseumItem,
+  SeasonalItem,
+  SellableItem,
+} from '../../types/BaseItem';
+import { Bug } from '../../types/Bug';
+import { Fish } from '../../types/Fish';
+import Group, { GroupType } from '../../types/Group';
+import { SeaCreature } from '../../types/SeaCreature';
+import { Villager } from '../../types/Villager';
 import { BLUR_DATA_URL } from '../../utils/blurDataURL';
 
 export const getServerSideProps: GetServerSideProps = async ({ query }) => {
@@ -30,8 +48,11 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 
 const GroupPage: React.FC = () => {
   const { query } = useRouter();
-  const { group, item } = query || {}; // TODO: Check if valid group
-  const { data, isLoading } = useQueryItem(group as Group, item as string);
+  const { group, item } = (query || {}) as { group: Group; item: string }; // TODO: Check if valid group
+  const { data, isLoading } = useQueryItem<GroupType[typeof group]>(
+    group as Group,
+    item as string
+  );
   const { mq } = useCustomTheme();
   const groupData = useMemo(
     () => GROUP_DATA.find(({ id }) => id === group),
@@ -39,17 +60,18 @@ const GroupPage: React.FC = () => {
   );
 
   if (isLoading || !data) {
-    return <div>Loading...</div>;
+    return <Spinner />;
   }
 
   const { name, imageUri, iconUri } = data;
 
   return (
     <Container>
+      <Header css={{ color: 'white' }} />
       <div
         css={mq({
           width: '100%',
-          height: ['250px', '400px'],
+          height: ['300px', '400px'],
           borderBottomLeftRadius: ['60% 20%', '50% 30%'],
           borderBottomRightRadius: ['60% 20%', '50% 30%'],
           background: groupData?.bg,
@@ -80,9 +102,151 @@ const GroupPage: React.FC = () => {
             blurDataURL={BLUR_DATA_URL}
           />
         </div>
-        <h1 css={{ color: 'white' }}>{name.nameUSen}</h1>
+        <h1
+          css={{
+            color: 'white',
+            textTransform: 'capitalize',
+            marginTop: '4px',
+          }}
+        >
+          {name.nameUSen}
+        </h1>
       </div>
-      {/* <text css={{ cursor: 'pointer' }}>{JSON.stringify(data)}</text> */}
+      <div
+        css={mq({
+          marginTop: ['280px', '380px'],
+          paddingLeft: ['12px', '32px'],
+          paddingRight: ['12px', '32px'],
+        })}
+      >
+        <div
+          css={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          {[
+            {
+              name: 'Price',
+              value: (data as SellableItem)?.price,
+            },
+            {
+              name: 'Buy Price',
+              value: (data as BuyableItem)?.buyPrice,
+            },
+            {
+              name: 'Sale Price',
+              value: (data as BuyableItem)?.sellPrice,
+            },
+            {
+              name: 'Price w/ Flick',
+              value: (data as Bug)?.priceFlick,
+            },
+            {
+              name: 'Price w/ CJ',
+              value: (data as Fish)?.priceCj,
+            },
+          ]
+            .filter(({ value }) => value)
+            .map(({ name, value }) => (
+              <div
+                css={(theme) => ({
+                  display: 'flex',
+                  justifyContent: 'center',
+                  background: theme.colors.green,
+                  padding: '12px 24px',
+                  borderRadius: '12px',
+                  flexDirection: 'column',
+                  marginRight: '12px',
+                })}
+                key={`${name}-${value}`}
+              >
+                <p css={{ fontSize: '16px', margin: '0 0 8px 0' }}>
+                  <b>{name}</b>
+                </p>
+                <div
+                  css={{
+                    display: 'flex',
+                  }}
+                >
+                  <CoinVertical
+                    size={26}
+                    weight="bold"
+                    css={{ marginTop: '-2px' }}
+                  />
+                  <div css={{ marginLeft: '4px', fontSize: '20px' }}>
+                    {value}
+                  </div>
+                </div>
+              </div>
+            ))}
+        </div>
+        {(data as MuseumItem)?.museumPhrase && (
+          <>
+            <SectionHeader>Museum Description</SectionHeader>
+            <p>{(data as MuseumItem).museumPhrase}</p>
+          </>
+        )}
+
+        {(data as Villager)?.personality ? (
+          <VillagerInfo villager={data as Villager} />
+        ) : (data as Villager)?.catchPhrase ? (
+          <>
+            <SectionHeader>Catchphrase</SectionHeader>
+            <p>{(data as Villager).catchPhrase}</p>
+          </>
+        ) : null}
+
+        {(data as SeasonalItem)?.availability && (
+          <AvailabilityInfo
+            availability={(data as SeasonalItem).availability}
+          />
+        )}
+
+        {(data as SeaCreature)?.speed && (
+          <>
+            <SectionHeader>Other Information</SectionHeader>
+            <InfoGrid>
+              <div>
+                <SubSectionHeader icon={CaretDoubleRight}>
+                  Speed
+                </SubSectionHeader>
+                <p css={{ margin: 0 }}>{(data as SeaCreature)?.speed}</p>
+              </div>
+            </InfoGrid>
+          </>
+        )}
+
+        {imageUri && (
+          <>
+            <SectionHeader>Other Images</SectionHeader>
+            <div css={{ display: 'flex' }}>
+              {iconUri && (
+                <>
+                  <Image
+                    src={iconUri}
+                    width="150px"
+                    height="150px"
+                    placeholder="blur"
+                    alt={name.nameUSen}
+                    blurDataURL={BLUR_DATA_URL}
+                  />
+                  <div css={{ width: '16px' }} />
+                </>
+              )}
+              <Image
+                src={imageUri}
+                width="150px"
+                height="150px"
+                placeholder="blur"
+                alt={name.nameUSen}
+                blurDataURL={BLUR_DATA_URL}
+              />
+            </div>
+          </>
+        )}
+      </div>
     </Container>
   );
 };

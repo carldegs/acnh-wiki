@@ -1,19 +1,19 @@
-import { CSSPropertiesWithMultiValues } from '@emotion/serialize';
 import Link from 'next/link';
 import { ReactElement } from 'react';
 
-interface IconButtonProps {
+import { EmotionComponentProps } from '../types/EmotionComponentProps';
+
+interface IconButtonProps extends EmotionComponentProps {
   onClick?: () => void;
   icon: ReactElement;
   href?: string;
-  _css?: CSSPropertiesWithMultiValues;
 }
 
 const IconButton: React.FC<IconButtonProps> = ({
   icon,
   href,
-  _css,
   onClick,
+  className,
 }) => {
   const Button = (
     <button
@@ -24,13 +24,13 @@ const IconButton: React.FC<IconButtonProps> = ({
         width: '100%',
         aspectRatio: '1',
         cursor: 'pointer',
-        ..._css,
       })}
       onClick={() => {
         if (onClick) {
           onClick();
         }
       }}
+      className={className}
     >
       {icon}
     </button>

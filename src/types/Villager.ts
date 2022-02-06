@@ -7,5 +7,9 @@ export interface Villager extends BaseItem {
   species: string;
   gender: string;
   catchPhrase: string;
+  saying: string;
   iconUri: string;
+  bubbleColor: string;
+  textColor: string;
+  hobby: string;
 }

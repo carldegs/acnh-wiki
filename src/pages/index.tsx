@@ -40,7 +40,7 @@ const Home: NextPage = () => {
               }}
             >
               <IconButton
-                _css={{
+                css={{
                   background: bg,
                 }}
                 icon={
