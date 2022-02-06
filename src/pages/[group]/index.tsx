@@ -6,8 +6,11 @@ import { useMemo } from 'react';
 
 import Container from '../../atoms/Container';
 import ScrollToTopButton from '../../atoms/ScrollToTopButton';
+import Spinner from '../../atoms/Spinner';
+import GROUP_DATA from '../../constants/groupData';
 import useCustomTheme from '../../hooks/useCustomTheme';
 import { useQueryList } from '../../modules/queries';
+import Header from '../../organisms/Header';
 import BaseItem from '../../types/BaseItem';
 import Group from '../../types/Group';
 import { BLUR_DATA_URL } from '../../utils/blurDataURL';
@@ -33,8 +36,13 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
 const GroupPage: React.FC = () => {
   const { mq } = useCustomTheme();
   const { query } = useRouter();
+
   const { group } = query || {}; // TODO: Check if valid group
   const { data, isLoading } = useQueryList(group as Group);
+  const headerTitle = useMemo(() => {
+    const groupData = GROUP_DATA.find(({ id }) => id === group);
+    return groupData?.name || '';
+  }, [group]);
   const groupedData = useMemo(() => {
     if (!data) {
       return [];
@@ -76,12 +84,13 @@ const GroupPage: React.FC = () => {
   }, [data]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Spinner />;
   }
 
   return (
     <Container>
       <ScrollToTopButton />
+      <Header>{headerTitle}</Header>
       <div css={{ display: 'flex', flexDirection: 'column' }}>
         {groupedData?.map(({ letter, children }) => (
           <div key={`group-${letter}`}>

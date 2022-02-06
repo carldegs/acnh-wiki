@@ -16,7 +16,7 @@ export interface SellableItem extends BaseItem {
 
 export interface BuyableItem extends BaseItem {
   buyPrice: number;
-  salePrice: number;
+  sellPrice: number;
 }
 
 export interface MuseumItem extends SellableItem {

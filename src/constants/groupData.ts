@@ -3,7 +3,6 @@ import BugsIcon from '../../public/icons/bugs.png';
 import FishIcon from '../../public/icons/fish.png';
 import FossilsIcon from '../../public/icons/fossils.png';
 import SeaIcon from '../../public/icons/sea.png';
-import SongsIcon from '../../public/icons/songs.png';
 import VillagersIcon from '../../public/icons/villagers.png';
 import theme from '../theme';
 import Group from '../types/Group';
@@ -38,12 +37,6 @@ const GROUP_DATA = [
     name: 'Villagers',
     icon: VillagersIcon,
     bg: theme.colors.pink,
-  },
-  {
-    id: Group.songs,
-    name: 'Songs',
-    icon: SongsIcon,
-    bg: theme.colors.purple,
   },
   {
     id: Group.art,

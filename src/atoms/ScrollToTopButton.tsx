@@ -25,7 +25,7 @@ const ScrollToTopButton: React.FC = () => {
 
   return (
     <IconButton
-      _css={{
+      css={{
         height: '40px',
         width: '40px',
         position: 'fixed',

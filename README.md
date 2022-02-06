@@ -24,27 +24,29 @@ The app uses the [ACNH API](http://acnhapi.com/). This include data for differen
 3. Bugs
 4. Fossils
 5. Villages
-6. K.K Slider Songs
-
-Notes:
-
-1. Fish and Sea Creatures will be joined into one group, Fishes and Sea Creatures, leaving us with 5 groups.
+6. Art
 
 ## Pages
 
 ### Home Page - `/`
 
-Contains links to the different groups of the game. This will be statically-generated.
+![Home Screen](public/screenshots/home.jpg)
+
+Contains links to the different groups of the game.
 
 ### Group Page - `/[group]`
 
-Shows list of items within the group. This will be server-rendered.
+![Group Page Screen](public/screenshots/list.jpg)
+
+Shows list of items within the group.
 
 ### Item page - `/[group]/[item]`
 
-Show item information. This will be server-rendered.
+![Item Page Screen](public/screenshots/item.jpg)
 
-Note: If we assumed that no more items will be added in the game, we could make the group and item pages to be statically-generated. This gives us the benefit of the page being cache-able in a CDN/Edge network, though keeping it as SSR pages could improve our SEO.
+Show item information. It should be noted that the information available to each group is different. The typings can be seen at `/src/types`.
+
+Note: If we assumed that no more items will be added in the game, we could make the group and item pages to be statically-generated. This gives us the benefit of the page being cache-able in a CDN/Edge network.
 
 ## UI
 
@@ -54,9 +56,7 @@ The UI is based on the player's in-game phone UI.
 
 ### CSS-in-JS
 
-For handling CSS, I used [Emotion](https://emotion.sh/docs/introduction) mainly due to it's Object styles feature which allows us to pass css properties as an object and give us typings that would increase developer experience. I also used `facepaint` which allows us to define css properties at different breakpoints as an array. This would reduce the time coding repetitve media queries. Here's an example how this can be used with the home page's grid.
-
-// TODO: Add example
+For handling CSS, I used [Emotion](https://emotion.sh/docs/introduction) mainly due to it's Object styles feature which allows us to pass css properties as an object and give us typings that would increase developer experience. I also used `facepaint` which allows us to define css properties at different breakpoints as an array. This would reduce the time coding repetitve media queries.
 
 To be frank, this is my first time using Emotion and facepaint but this implementation is very similar to how Chakra-UI handles breakpoints. Usually, my projects either use Chakra-UI or Styled Components.
 
