@@ -68,15 +68,19 @@ const AvailabilityInfo: React.FC<AvailabilityInfoProps> = ({
           </p>
         </div>
 
-        <div>
-          <SubSectionHeader icon={MapTrifold}>Location</SubSectionHeader>
-          <p css={{ margin: 0 }}>{location}</p>
-        </div>
+        {location && (
+          <div>
+            <SubSectionHeader icon={MapTrifold}>Location</SubSectionHeader>
+            <p css={{ margin: 0 }}>{location}</p>
+          </div>
+        )}
 
-        <div>
-          <SubSectionHeader icon={StarFour}>Rarity</SubSectionHeader>
-          <p css={{ margin: 0 }}>{rarity}</p>
-        </div>
+        {rarity && (
+          <div>
+            <SubSectionHeader icon={StarFour}>Rarity</SubSectionHeader>
+            <p css={{ margin: 0 }}>{rarity}</p>
+          </div>
+        )}
       </InfoGrid>
     </div>
   );

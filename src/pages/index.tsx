@@ -47,6 +47,7 @@ const Home: NextPage = () => {
                   <Image src={icon} alt={`${id}-button`} layout="responsive" />
                 }
                 href={`/${id}`}
+                id={id}
               />
               <p css={{ marginTop: '8px' }}>{name}</p>
             </div>

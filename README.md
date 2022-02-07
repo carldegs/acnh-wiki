@@ -73,3 +73,7 @@ For other client-side states that needs to be managed, a simple Context hook wil
 The lint ruleset I've used is the same as the one I used for my template. This is based on the recommended ESLint ruleset with plugins to handle rules for React, React Hooks (this one helps in setting up hook dependencies) and digital accessibility (jsx-a11y), and a prettier plugin to automatically sort imports.
 
 I also installed Husky to handle pre-commit checks to prevent incorrect code from being pushed.
+
+## Unit Testing
+
+Jest and React Testing Library were used to test the pages and components of the project. Note that tests for components we're not finished on time.

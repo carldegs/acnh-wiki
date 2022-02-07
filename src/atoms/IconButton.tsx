@@ -7,6 +7,7 @@ interface IconButtonProps extends EmotionComponentProps {
   onClick?: () => void;
   icon: ReactElement;
   href?: string;
+  id?: string;
 }
 
 const IconButton: React.FC<IconButtonProps> = ({
@@ -14,6 +15,7 @@ const IconButton: React.FC<IconButtonProps> = ({
   href,
   onClick,
   className,
+  id,
 }) => {
   const Button = (
     <button
@@ -31,6 +33,7 @@ const IconButton: React.FC<IconButtonProps> = ({
         }
       }}
       className={className}
+      data-testid={`button-${id}`}
     >
       {icon}
     </button>

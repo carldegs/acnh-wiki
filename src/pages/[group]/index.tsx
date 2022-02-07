@@ -21,11 +21,12 @@ const GroupPage: React.FC = () => {
   const { group } = router?.query || {}; // TODO: Check if valid group
   const { data, isLoading } = useQueryList(group as Group, {
     onError: (err) => {
-      if ((err as any)?.response?.status === 404) {
+      if (err?.response?.status === 404) {
         router.push('/404');
       }
     },
   });
+
   const headerTitle = useMemo(() => {
     const groupData = GROUP_DATA.find(({ id }) => id === group);
     return groupData?.name || '';
@@ -113,6 +114,7 @@ const GroupPage: React.FC = () => {
                         background: theme.colors.teal,
                       },
                     })}
+                    data-testid={`button-${name['nameUSen']}`}
                   >
                     <Image
                       src={iconUri || imageUri}
