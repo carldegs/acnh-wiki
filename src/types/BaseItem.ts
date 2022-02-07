@@ -30,8 +30,8 @@ export interface SeasonalItem extends MuseumItem {
     time: string; // '9am - 4pm'
     isAllDay: boolean;
     isAllYear: boolean;
-    location: string;
-    rarity: Rarity;
+    location?: string;
+    rarity?: Rarity;
     monthArrayNorthern: number[];
     monthArraySouthern: number[];
     timeArray: number[];

@@ -1,0 +1,377 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders group page unchanged 1`] = `
+@keyframes animation-0 {
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.emotion-0 {
+  width: full;
+  height: 95vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.emotion-2 {
+  -webkit-animation: animation-0 1s ease infinite;
+  animation: animation-0 1s ease infinite;
+}
+
+<div>
+  <div
+    class="emotion-0"
+  >
+    <div
+      class="emotion-1"
+    >
+      <svg
+        class="emotion-2"
+        fill="currentColor"
+        height="80"
+        viewBox="0 0 256 256"
+        width="80"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          fill="none"
+          height="256"
+          width="256"
+        />
+        <path
+          d="M124,136a8,8,0,0,1-8-8,16,16,0,0,1,16-16,25.9,25.9,0,0,1,26,26,36,36,0,0,1-36,36,46,46,0,0,1-46-46,56,56,0,0,1,56-56,65.9,65.9,0,0,1,66,66,76,76,0,0,1-76,76,86,86,0,0,1-86-86,96,96,0,0,1,96-96A106.1,106.1,0,0,1,238,138"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="24"
+        />
+      </svg>
+      <p>
+        Loading...
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders homepage unchanged 1`] = `
+.emotion-0 {
+  width: 100%;
+  max-width: 768px;
+  margin: auto;
+}
+
+@media (min-width: 30em) {
+  .emotion-0 {
+    max-width: 1024px;
+  }
+}
+
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.emotion-2 {
+  margin-bottom: 24px;
+}
+
+.emotion-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  max-width: 400px;
+  gap: 20px;
+}
+
+.emotion-5 {
+  background: #756c5b;
+  border: none;
+  border-radius: 25%/30%;
+  width: 100%;
+  aspect-ratio: 1;
+  cursor: pointer;
+  background: #889cf3;
+}
+
+.emotion-6 {
+  margin-top: 8px;
+}
+
+.emotion-8 {
+  background: #756c5b;
+  border: none;
+  border-radius: 25%/30%;
+  width: 100%;
+  aspect-ratio: 1;
+  cursor: pointer;
+  background: #7fd8bc;
+}
+
+.emotion-11 {
+  background: #756c5b;
+  border: none;
+  border-radius: 25%/30%;
+  width: 100%;
+  aspect-ratio: 1;
+  cursor: pointer;
+  background: #e19564;
+}
+
+.emotion-14 {
+  background: #756c5b;
+  border: none;
+  border-radius: 25%/30%;
+  width: 100%;
+  aspect-ratio: 1;
+  cursor: pointer;
+  background: #ffc766;
+}
+
+.emotion-17 {
+  background: #756c5b;
+  border: none;
+  border-radius: 25%/30%;
+  width: 100%;
+  aspect-ratio: 1;
+  cursor: pointer;
+  background: #fca6b3;
+}
+
+.emotion-20 {
+  background: #756c5b;
+  border: none;
+  border-radius: 25%/30%;
+  width: 100%;
+  aspect-ratio: 1;
+  cursor: pointer;
+  background: #d0dc4a;
+}
+
+<div>
+  <div
+    class="emotion-0"
+  >
+    <main
+      class="emotion-1"
+    >
+      <h1
+        class="emotion-2"
+      >
+        ACNH Wiki
+      </h1>
+      <div
+        class="emotion-3"
+      >
+        <div
+          class="emotion-1"
+        >
+          <button
+            class="emotion-5"
+            data-testid="button-fish"
+          />
+          <p
+            class="emotion-6"
+          >
+            Fishes
+          </p>
+        </div>
+        <div
+          class="emotion-1"
+        >
+          <button
+            class="emotion-8"
+            data-testid="button-sea"
+          />
+          <p
+            class="emotion-6"
+          >
+            Sea Creatures
+          </p>
+        </div>
+        <div
+          class="emotion-1"
+        >
+          <button
+            class="emotion-11"
+            data-testid="button-bugs"
+          />
+          <p
+            class="emotion-6"
+          >
+            Bugs
+          </p>
+        </div>
+        <div
+          class="emotion-1"
+        >
+          <button
+            class="emotion-14"
+            data-testid="button-fossils"
+          />
+          <p
+            class="emotion-6"
+          >
+            Fossils
+          </p>
+        </div>
+        <div
+          class="emotion-1"
+        >
+          <button
+            class="emotion-17"
+            data-testid="button-villagers"
+          />
+          <p
+            class="emotion-6"
+          >
+            Villagers
+          </p>
+        </div>
+        <div
+          class="emotion-1"
+        >
+          <button
+            class="emotion-20"
+            data-testid="button-art"
+          />
+          <p
+            class="emotion-6"
+          >
+            Art
+          </p>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+`;
+
+exports[`renders items page unchanged 1`] = `
+@keyframes animation-0 {
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.emotion-0 {
+  width: full;
+  height: 95vh;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.emotion-1 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.emotion-2 {
+  -webkit-animation: animation-0 1s ease infinite;
+  animation: animation-0 1s ease infinite;
+}
+
+<div>
+  <div
+    class="emotion-0"
+  >
+    <div
+      class="emotion-1"
+    >
+      <svg
+        class="emotion-2"
+        fill="currentColor"
+        height="80"
+        viewBox="0 0 256 256"
+        width="80"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <rect
+          fill="none"
+          height="256"
+          width="256"
+        />
+        <path
+          d="M124,136a8,8,0,0,1-8-8,16,16,0,0,1,16-16,25.9,25.9,0,0,1,26,26,36,36,0,0,1-36,36,46,46,0,0,1-46-46,56,56,0,0,1,56-56,65.9,65.9,0,0,1,66,66,76,76,0,0,1-76,76,86,86,0,0,1-86-86,96,96,0,0,1,96-96A106.1,106.1,0,0,1,238,138"
+          fill="none"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="24"
+        />
+      </svg>
+      <p>
+        Loading...
+      </p>
+    </div>
+  </div>
+</div>
+`;

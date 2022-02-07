@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`IconButton renders items page unchanged 1`] = `
+.emotion-0 {
+  background: #756c5b;
+  border: none;
+  border-radius: 25%/30%;
+  width: 100%;
+  aspect-ratio: 1;
+  cursor: pointer;
+}
+
+<div>
+  <button
+    class="emotion-0"
+    data-testid="button-undefined"
+  >
+    <div>
+      +
+    </div>
+  </button>
+</div>
+`;

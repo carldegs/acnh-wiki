@@ -23,19 +23,20 @@ const HeaderBreadcrumbs: React.FC<EmotionComponentProps> = ({ className }) => {
         Home
       </BreadcrumbItem>
 
-      {paths.map((path, i) => (
-        <React.Fragment key={path}>
+      {paths.map((path, i) => {
+        return (
           <BreadcrumbItem
             className={className}
             onClick={() => {
               router.push(`/${paths.slice(0, i + 1).join('/')}`);
             }}
             css={{ textTransform: 'capitalize' }}
+            key={path}
           >
-            {path.replaceAll('_', ' ').replaceAll('-', ' ')}
+            {path.replace(/_/g, ' ').replace(/-/g, ' ')}
           </BreadcrumbItem>
-        </React.Fragment>
-      ))}
+        );
+      })}
     </Breadcrumb>
   );
 };

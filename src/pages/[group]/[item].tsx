@@ -14,6 +14,7 @@ import { useQueryItem } from '../../modules/queries';
 import AvailabilityInfo from '../../organisms/AvailabilityInfo';
 import Header from '../../organisms/Header';
 import VillagerInfo from '../../organisms/VillagerInfo';
+import { Art } from '../../types/Art';
 import {
   BuyableItem,
   MuseumItem,
@@ -27,7 +28,7 @@ import { SeaCreature } from '../../types/SeaCreature';
 import { Villager } from '../../types/Villager';
 import { BLUR_DATA_URL } from '../../utils/blurDataURL';
 
-const GroupPage: React.FC = () => {
+const ItemPage: React.FC = () => {
   const router = useRouter();
   const { group, item } = (router?.query || {}) as {
     group: Group;
@@ -173,11 +174,19 @@ const GroupPage: React.FC = () => {
               </div>
             ))}
         </div>
-        {(data as MuseumItem)?.museumPhrase && (
+        {((data as MuseumItem)?.museumPhrase || (data as Art)?.museumDesc) && (
           <>
             <SectionHeader>Museum Description</SectionHeader>
-            <p>{(data as MuseumItem).museumPhrase}</p>
+            <p>
+              {(data as MuseumItem).museumPhrase || (data as Art).museumDesc}
+            </p>
           </>
+        )}
+
+        {(data as Art)?.museumDesc && (
+          <p>
+            <b>Has Fake?</b> {(data as Art).hasFake ? 'Yes' : 'No'}
+          </p>
         )}
 
         {(data as Villager)?.personality ? (
@@ -242,4 +251,4 @@ const GroupPage: React.FC = () => {
   );
 };
 
-export default GroupPage;
+export default ItemPage;
