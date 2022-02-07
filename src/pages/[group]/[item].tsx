@@ -1,4 +1,3 @@
-import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { CaretDoubleRight, CoinVertical } from 'phosphor-react';
@@ -28,30 +27,22 @@ import { SeaCreature } from '../../types/SeaCreature';
 import { Villager } from '../../types/Villager';
 import { BLUR_DATA_URL } from '../../utils/blurDataURL';
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { group, item } = query;
-
-  if (!group || !Object.values(Group).includes(group as Group) || !item) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/404',
-      },
-      props: {},
-    };
-  }
-
-  return {
-    props: {},
-  };
-};
-
 const GroupPage: React.FC = () => {
-  const { query } = useRouter();
-  const { group, item } = (query || {}) as { group: Group; item: string }; // TODO: Check if valid group
+  const router = useRouter();
+  const { group, item } = (router?.query || {}) as {
+    group: Group;
+    item: string;
+  }; // TODO: Check if valid group
   const { data, isLoading } = useQueryItem<GroupType[typeof group]>(
     group as Group,
-    item as string
+    item as string,
+    {
+      onError: (err) => {
+        if ((err as any)?.response?.status === 404) {
+          router.push('/404');
+        }
+      },
+    }
   );
   const { mq } = useCustomTheme();
   const groupData = useMemo(
