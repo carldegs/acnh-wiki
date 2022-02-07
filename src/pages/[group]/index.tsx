@@ -1,4 +1,3 @@
-import { GetServerSideProps } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -15,30 +14,18 @@ import BaseItem from '../../types/BaseItem';
 import Group from '../../types/Group';
 import { BLUR_DATA_URL } from '../../utils/blurDataURL';
 
-export const getServerSideProps: GetServerSideProps = async ({ query }) => {
-  const { group } = query;
-
-  if (!group || !Object.values(Group).includes(group as Group)) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/404',
-      },
-      props: {},
-    };
-  }
-
-  return {
-    props: {},
-  };
-};
-
 const GroupPage: React.FC = () => {
   const { mq } = useCustomTheme();
-  const { query } = useRouter();
+  const router = useRouter();
 
-  const { group } = query || {}; // TODO: Check if valid group
-  const { data, isLoading } = useQueryList(group as Group);
+  const { group } = router?.query || {}; // TODO: Check if valid group
+  const { data, isLoading } = useQueryList(group as Group, {
+    onError: (err) => {
+      if ((err as any)?.response?.status === 404) {
+        router.push('/404');
+      }
+    },
+  });
   const headerTitle = useMemo(() => {
     const groupData = GROUP_DATA.find(({ id }) => id === group);
     return groupData?.name || '';

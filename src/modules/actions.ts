@@ -7,7 +7,6 @@ import { jsonToCamel } from '../utils/case';
 import { baseKeys } from './keys';
 
 export const getList = async <T = BaseItem>(group: Group): Promise<T[]> => {
-  // TODO: Add error handling
   const { data } = await axios.get<Record<string, T>>(
     `https://acnhapi.com/v1/${group}`
   );
@@ -33,7 +32,6 @@ export const getItem = async <T = BaseItem>(
   group: Group,
   item: string
 ): Promise<T> => {
-  // TODO: Add error handling
   const { data } = await axios.get<T>(
     `https://acnhapi.com/v1/${group}/${item}`
   );
